@@ -2249,6 +2249,69 @@ Private comments are for the instructor only. Public comments will be sent to th
 **Assumptions:**
 **Open Issues:**
 
+### **UC-EVA-notify-nonsubmitted: The notification is sent to students with missing assignments**
+
+**UC ID and Name:** UC-EVA-notify-nonsubmitted: notify students who have not submitted assignment
+**Created By:**
+**Date Created:**
+**Primary Actor:** system
+**Secondary Actors:**
+**Trigger:** Scheduled job finds students with unsubmitted assignments due later the same day.
+**Description:** The system emails all students who have not submitted assignments due on the current day.
+
+**Preconditions:**
+- PRE-1. The system runs its daily check.
+- PRE-2. There is an assignment do that day.
+- PRE-3. The system checks to see if each student has an active submission.
+- PRE-4. The alert is sent to students with no submission.
+
+**Postconditions:**
+- POST-1. The students have been alerted to submit their assignment.
+
+**Main Success Scenario:**
+1. The student is alerted to their lack of submission.
+2. The student recieves the alert.
+3. The student completes the noted assignment.
+4. The student submits the completed assignment before it is due.
+5. Use case ends.
+
+**Extensions:**
+- **1a. The previous week is not one of the course section's active weeks** (e.g., the current week is the section's first active week, whose preceding week is inactive):
+  - 1a1. The system does not accept a peer evaluation for that week and informs the student that peer evaluations may be submitted only for the course section's active weeks (BR-active-weeks).
+  - 1a2. Use case ends.
+- **1b. The week to be evaluated is not the previous week, or its one-week submission window has closed:**
+  - 1b1. The system does not accept the peer evaluation and informs the student that a peer evaluation may be submitted only for the previous week, within its one-week window, and that a missed evaluation cannot be made up (BR-evaluation-submission-window).
+  - 1b2. Use case ends.
+- **1c. The student is not assigned to a team:**
+  - 1c1. The system does not accept a peer evaluation and informs the student that she must be assigned to a team before she can submit peer evaluations (BR-team-assignment-required).
+  - 1c2. Use case ends.
+- **4a. Input validation rule violation:**
+  - 4a1. The system alerts the student that an input validation rule is violated and displays the nature and location of the error.
+  - 4a2. The student corrects the mistake and returns to step 4 of the normal flow.
+
+**Priority:** High
+**Frequency of Use:** Approximately 35-40 users, 2 usage per week.
+**Business Rules:** BR-team-scoped-access (the student evaluates the members of a team she belongs to, and no other team), BR-team-assignment-required (only a student assigned to a team submits one), BR-active-weeks, BR-evaluation-editable-until-close, BR-evaluation-submission-window, BR-evaluation-private-comment
+
+**Associated Information:**
+
+Details:
+- Every team member MUST be evaluated.
+- Scores MUST be integers.
+
+Example (each team member, self included, is evaluated on every rubric criterion):
+
+| student | Quality of work — How do you rate the quality of this teammate's work? (1-10) | … | Public comments | Private comments |
+| ---- | ---- | ---- | ---- | ---- |
+| John Doe | 8 | … | … | … |
+| Lily Fisher | 10 | … | … | … |
+| Tim Smith | 9 | … | … | … |
+
+Private comments are for the instructor only. Public comments will be sent to the student under assessment. The student shall be able to cancel the use case at any time prior to submitting it.
+
+**Assumptions:**
+**Open Issues:**
+
 ### **UC-EVA-view-own-evaluation: The student views her own peer evaluation report**
 
 **UC ID and Name:** UC-EVA-view-own-evaluation: View her own peer evaluation report
