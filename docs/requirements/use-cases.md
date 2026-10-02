@@ -2289,20 +2289,22 @@ Private comments are for the instructor only. Public comments will be sent to th
   - 2a1. The system logs the delivery failure.
   - 2a2. Use case ends.
 
+
 **Priority:** High
 **Frequency of Use:** Approximately 35-40 users, 2 usage per week.
-**Business Rules:** BR-team-scoped-access (the student evaluates the members of a team she belongs to, and no other team), BR-team-assignment-required (only a student assigned to a team submits one), BR-active-weeks, BR-evaluation-editable-until-close, BR-evaluation-submission-window, BR-evaluation-private-comment
+**Business Rules:** BR-team-assignment-required, BR-active-weeks, BR-student-lifecycle, BR-evaluation-submission-window
 
 **Associated Information:**
 
 Details:
-- Every team member MUST be evaluated.
-- Scores MUST be integers.
+- assignments are only accepted before they are due
 
-
-Private comments are for the instructor only. Public comments will be sent to the student under assessment. The student shall be able to cancel the use case at any time prior to submitting it.
 
 **Assumptions:**
+- A student has submitted her weekly activity report for a week if she has recorded at least one activity totalling 6 hours for that week.
+- A student has submitted her peer evaluation for a week only once she has evaluated every member of her team for that week; a partial set of evaluations counts as not submitted.
+- This use case replaces the existing reminder sent to every student (FR-NOT-weekly-reminder): only students who have not submitted an assignment due that day are alerted.
+
 **Open Issues:**
 
 ### **UC-EVA-view-own-evaluation: The student views her own peer evaluation report**
