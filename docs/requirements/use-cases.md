@@ -2276,18 +2276,18 @@ Private comments are for the instructor only. Public comments will be sent to th
 5. Use case ends.
 
 **Extensions:**
-- **1a. The previous week is not one of the course section's active weeks** (e.g., the current week is the section's first active week, whose preceding week is inactive):
-  - 1a1. The system does not accept a peer evaluation for that week and informs the student that peer evaluations may be submitted only for the course section's active weeks (BR-active-weeks).
+- **1a. The student is not assigned to a team:**
+  - 1a1. The system does not alert the student, because she may not submit a weekly activity report or peer evaluation until she is assigned to a team (BR-team-assignment-required).
   - 1a2. Use case ends.
-- **1b. The week to be evaluated is not the previous week, or its one-week submission window has closed:**
-  - 1b1. The system does not accept the peer evaluation and informs the student that a peer evaluation may be submitted only for the previous week, within its one-week window, and that a missed evaluation cannot be made up (BR-evaluation-submission-window).
+- **1b. The assignment due is a peer evaluation for a week that is not one of the course section's active weeks:**
+  - 1b1. The system does not alert the student, because peer evaluations may be submitted only for the course section's active weeks (BR-active-weeks).
   - 1b2. Use case ends.
-- **1c. The student is not assigned to a team:**
-  - 1c1. The system does not accept a peer evaluation and informs the student that she must be assigned to a team before she can submit peer evaluations (BR-team-assignment-required).
+- **1c. The student has been deactivated:**
+  - 1c1. The system does not alert the student, because deactivation revokes her access (BR-student-lifecycle).
   - 1c2. Use case ends.
-- **4a. Input validation rule violation:**
-  - 4a1. The system alerts the student that an input validation rule is violated and displays the nature and location of the error.
-  - 4a2. The student corrects the mistake and returns to step 4 of the normal flow.
+- **2a. The alert email cannot be delivered:**
+  - 2a1. The system logs the delivery failure.
+  - 2a2. Use case ends.
 
 **Priority:** High
 **Frequency of Use:** Approximately 35-40 users, 2 usage per week.
@@ -2299,13 +2299,6 @@ Details:
 - Every team member MUST be evaluated.
 - Scores MUST be integers.
 
-Example (each team member, self included, is evaluated on every rubric criterion):
-
-| student | Quality of work — How do you rate the quality of this teammate's work? (1-10) | … | Public comments | Private comments |
-| ---- | ---- | ---- | ---- | ---- |
-| John Doe | 8 | … | … | … |
-| Lily Fisher | 10 | … | … | … |
-| Tim Smith | 9 | … | … | … |
 
 Private comments are for the instructor only. Public comments will be sent to the student under assessment. The student shall be able to cancel the use case at any time prior to submitting it.
 
