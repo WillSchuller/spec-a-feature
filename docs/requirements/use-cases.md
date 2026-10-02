@@ -2307,6 +2307,7 @@ Details:
 - WAR and peer evaluations are checked for the previous week as they come due at the start of the nect week
 - The 6 hours are the sum of the completed hours (not the planned hours) of all the activities the student recorded for that week.
 - An "assignment" in this use case means a weekly activity report or a peer evaluation, and nothing else.
+- Completed hours is this context maps to actualHours in the code
 
 **Open Issues:**
 
