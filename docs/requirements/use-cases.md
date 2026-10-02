@@ -2249,6 +2249,68 @@ Private comments are for the instructor only. Public comments will be sent to th
 **Assumptions:**
 **Open Issues:**
 
+### **UC-EVA-notify-nonsubmitted: The notification is sent to students with missing assignments**
+
+**UC ID and Name:** UC-EVA-notify-nonsubmitted: notify students who have not submitted assignment
+**Created By:**
+**Date Created:**
+**Primary Actor:** system
+**Secondary Actors:**
+**Trigger:** Scheduled job finds students with unsubmitted assignments due later the same day.
+**Description:** The system emails all students who have not submitted assignments due on the current day.
+
+**Preconditions:**
+- PRE-1. The system runs its daily check.
+- PRE-2. There is an assignment do that day.
+- PRE-3. The system checks to see if each student has an active submission.
+- PRE-4. The alert is sent to students with no submission.
+
+**Postconditions:**
+- POST-1. The students have been alerted to submit their assignment.
+
+**Main Success Scenario:**
+1. The student is alerted to their lack of submission.
+2. The student recieves the alert.
+3. The student completes the noted assignment.
+4. The student submits the completed assignment before it is due.
+5. Use case ends.
+
+**Extensions:**
+- **1a. The student is not assigned to a team:**
+  - 1a1. The system does not alert the student, because she may not submit a weekly activity report or peer evaluation until she is assigned to a team (BR-team-assignment-required).
+  - 1a2. Use case ends.
+- **1b. The assignment due is a peer evaluation for a week that is not one of the course section's active weeks:**
+  - 1b1. The system does not alert the student, because peer evaluations may be submitted only for the course section's active weeks (BR-active-weeks).
+  - 1b2. Use case ends.
+- **1c. The student has been deactivated:**
+  - 1c1. The system does not alert the student, because deactivation revokes her access (BR-student-lifecycle).
+  - 1c2. Use case ends.
+- **2a. The alert email cannot be delivered:**
+  - 2a1. The system logs the delivery failure.
+  - 2a2. Use case ends.
+
+
+**Priority:** High
+**Frequency of Use:** Approximately 35-40 users, 2 usage per week.
+**Business Rules:** BR-team-assignment-required, BR-active-weeks, BR-student-lifecycle
+
+**Associated Information:**
+
+Details:
+- assignments are only accepted before they are due
+
+
+**Assumptions:**
+- A student has submitted her weekly activity report for a week if she has recorded activities totalling 6 hours for that week.
+- A student has submitted her peer evaluation for a week only once she has evaluated every member of her team for that week; a partial set of evaluations counts as not submitted.
+- This use case replaces the existing reminder sent to every student (FR-NOT-weekly-reminder): only students who have not submitted an assignment due that day are alerted.
+- WAR and peer evaluations are checked for the previous week as they come due at the start of the next week
+- The 6 hours are the sum of the completed hours (not the planned hours) of all the activities the student recorded for that week.
+- An "assignment" in this use case means a weekly activity report or a peer evaluation, and nothing else.
+- Completed hours in this context maps to actualHours in the code
+
+**Open Issues:**
+
 ### **UC-EVA-view-own-evaluation: The student views her own peer evaluation report**
 
 **UC ID and Name:** UC-EVA-view-own-evaluation: View her own peer evaluation report
