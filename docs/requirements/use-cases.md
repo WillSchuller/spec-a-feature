@@ -2292,7 +2292,7 @@ Private comments are for the instructor only. Public comments will be sent to th
 
 **Priority:** High
 **Frequency of Use:** Approximately 35-40 users, 2 usage per week.
-**Business Rules:** BR-team-assignment-required, BR-active-weeks, BR-student-lifecycle, BR-evaluation-submission-window
+**Business Rules:** BR-team-assignment-required, BR-active-weeks, BR-student-lifecycle
 
 **Associated Information:**
 
@@ -2301,9 +2301,12 @@ Details:
 
 
 **Assumptions:**
-- A student has submitted her weekly activity report for a week if she has recorded at least one activity totalling 6 hours for that week.
+- A student has submitted her weekly activity report for a week if she has recorded activities totalling 6 hours for that week.
 - A student has submitted her peer evaluation for a week only once she has evaluated every member of her team for that week; a partial set of evaluations counts as not submitted.
 - This use case replaces the existing reminder sent to every student (FR-NOT-weekly-reminder): only students who have not submitted an assignment due that day are alerted.
+- WAR and peer evaluations are checked for the previous week as they come due at the start of the nect week
+- The 6 hours are the sum of the completed hours (not the planned hours) of all the activities the student recorded for that week.
+- An "assignment" in this use case means a weekly activity report or a peer evaluation, and nothing else.
 
 **Open Issues:**
 
