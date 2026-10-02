@@ -2304,10 +2304,10 @@ Details:
 - A student has submitted her weekly activity report for a week if she has recorded activities totalling 6 hours for that week.
 - A student has submitted her peer evaluation for a week only once she has evaluated every member of her team for that week; a partial set of evaluations counts as not submitted.
 - This use case replaces the existing reminder sent to every student (FR-NOT-weekly-reminder): only students who have not submitted an assignment due that day are alerted.
-- WAR and peer evaluations are checked for the previous week as they come due at the start of the nect week
+- WAR and peer evaluations are checked for the previous week as they come due at the start of the next week
 - The 6 hours are the sum of the completed hours (not the planned hours) of all the activities the student recorded for that week.
 - An "assignment" in this use case means a weekly activity report or a peer evaluation, and nothing else.
-- Completed hours is this context maps to actualHours in the code
+- Completed hours in this context maps to actualHours in the code
 
 **Open Issues:**
 
